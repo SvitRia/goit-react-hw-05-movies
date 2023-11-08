@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -39,28 +38,33 @@ export default function MovieDetailsPage() {
   return (
     <>
       <>
-        <button onClick={handleClick} >
-          Go back
-        </button>
-        {movie && <h2>text={movie.title} </h2> }
+        <button onClick={handleClick}>Go back</button>
+        {/* {movie && <h3>{movie.title} </h3> } */}
         {loading && 'Loading ...'}
         {error && <div>{error}</div>}
         {movie && (
           <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <h3>{movie.title}</h3>
-            <p>({getYear()})</p>
-            <p>User Score: {movie.popularity}</p>
-            <div className="movie_overview">
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                alt={movie.title}
+              />
+            </div>
+                      <div> 
+              <h3>{movie.title}</h3>
+                          <p>({getYear()})</p>
+                          <div></div>
+                          
+            <h3>User Score: {movie.popularity}</h3>
+            <div >
               <h3>Overview</h3>
               <p>{movie.overview}</p>
+            </div>
             </div>
           </div>
         )}
         <hr />
+
         <div>
           <h2>Additional Information</h2>
           <NavLink
@@ -68,7 +72,7 @@ export default function MovieDetailsPage() {
             style={({ isActive }) => (isActive ? activeClassName : undefined)}
             state={location.state}
           >
-            <p >Reviews</p>
+            <p>Reviews</p>
           </NavLink>
 
           <NavLink
@@ -76,7 +80,7 @@ export default function MovieDetailsPage() {
             style={({ isActive }) => (isActive ? activeClassName : undefined)}
             state={location.state}
           >
-            <p >Cast</p>
+            <p>Cast</p>
           </NavLink>
           <hr />
           <Outlet />

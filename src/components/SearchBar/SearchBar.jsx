@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { SearchForm } from './SearchBar.styled';
 
 export const SearchBar =() => {
   const [searchParams, setSearchParams] = useSearchParams({ query: '' });
@@ -12,13 +13,13 @@ export const SearchBar =() => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <SearchForm onSubmit={handleSubmit}>
       <input
         name="searchQuery"
         value={searchQuery}
         onChange={({ target: { value } }) => setSearchQuery(value)}
       />
       <button type="submit">Search</button>
-    </form>
+    </SearchForm>
   );
 }

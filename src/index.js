@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { App } from 'components/App';
+import { GlobalStyle } from 'components/GlobalStyle';
 import './index.css';
 const theme = {
   colors: {
@@ -25,7 +26,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="goit-react-hw-05-movies">
        <ThemeProvider theme={theme}>
-      <App />
+        <App />
+        <GlobalStyle />
        </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

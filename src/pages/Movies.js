@@ -8,7 +8,7 @@ import { Loader } from "components/Loader";
 export default function MoviesSearch() {
   const [searchParams] = useSearchParams({ query: '' });
   const query = searchParams.get('query');
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState([]);
    const [loading, setLoading] = useState(false);
   // const [error, setError] = useState()
 

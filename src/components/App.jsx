@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
+import { Layout } from './Layout/Layout';
 import MovieDetails from 'pages/MovieDetails';
 import  Cast  from './Cast/Cast';
 import  Reviews  from './Reviews/Reviews';
@@ -14,9 +14,9 @@ export const App = () => {
       style={{
         height: '100vh',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        fontSize: 24,
         color: '#010101'
       }}
     >

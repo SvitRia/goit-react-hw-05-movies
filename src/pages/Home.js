@@ -33,6 +33,7 @@ export default function HomePage() {
         return (
             <div>
                 {loading && <Loader />}
+                <h2>Trehding today</h2>
                 {movies.length? (<MovieList movies={movies} />) : (
                     <p>There isn't any movie on this page.</p>)}
             </div>)

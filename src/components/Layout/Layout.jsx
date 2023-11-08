@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Toaster } from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
-import { Navigation } from './Navigation/Navigation';
+import { Navigation } from '../Navigation/Navigation';
+import { Header } from './Layout.styled';
 
 export const Container = styled.div`
   display: flex;
@@ -14,14 +14,13 @@ export const Container = styled.div`
 
 export const Layout = () => {
   return (
-    <>
-      <header>
+    <div>
+      <Header>
         <Navigation />
-      </header>
+      </Header>
 
       <Outlet />
-
-      <Toaster position="top-right" />
-    </>
+      
+    </div>
   );
 };
