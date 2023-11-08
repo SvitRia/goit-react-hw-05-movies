@@ -1,5 +1,4 @@
 
-import { Layout } from 'components/Layout';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -39,7 +38,7 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <Layout>
+      <>
         <button onClick={handleClick} >
           Go back
         </button>
@@ -82,7 +81,7 @@ export default function MovieDetailsPage() {
           <hr />
           <Outlet />
         </div>
-      </Layout>
+      </>
     </>
   );
 }

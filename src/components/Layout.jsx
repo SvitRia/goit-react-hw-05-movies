@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Layout = () => {
   return (
-    <Container>
+    <>
       <header>
         <Navigation />
       </header>
@@ -22,6 +22,6 @@ export const Layout = () => {
       <Outlet />
 
       <Toaster position="top-right" />
-    </Container>
+    </>
   );
 };

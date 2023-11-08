@@ -12,13 +12,13 @@ const END_POINTS = {
 };
 
 export const fetchTrending = async () => {
-    const response = await axios.get(`?api_key${API_KEY}${END_POINTS.TRENDING}`);
-  return response.data;
+    const response = await axios.get(`${END_POINTS.TRENDING}?api_key=${API_KEY}`);
+  return response.data.results;
 };
 
-export const fetchSearchQuery = async (searchQuery, page = 1) => {
+export const fetchSearchQuery = async (searchQuery) => {
   const response = await axios.get(
-    `${END_POINTS.QUERYSEARCH}?api_key=${API_KEY}&page=${page}&query=${searchQuery}`
+    `${END_POINTS.QUERYSEARCH}?api_key=${API_KEY}&query=${searchQuery}`
   );
 
   return response.data.results;

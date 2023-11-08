@@ -4,33 +4,38 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchSearchQuery } from 'api';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { MovieList } from 'components/MovieList/MovieList';
+import { Loader } from "components/Loader";
 
 export default function Movies() {
   const [searchParams] = useSearchParams({ query: '' });
   const query = searchParams.get('query');
   const [movies, setMovies] = useState();
-  const [error, setError] = useState();
+   const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState()
 
   useEffect(() => {
-    if (query) {
-      setError(null);
-
-      fetchSearchQuery(query)
-        .then(data => {
-          setMovies(data);
-         
-        })
-        .catch(error => {
-          setError(error.message);
-        });
+    async function fetchSearchMovie() {
+      try {
+        setLoading(true)
+        const result = await fetchSearchQuery()
+        setMovies(result)
+      }
+      catch (error) {
+        alert(error.message);
+      } finally {
+        setLoading(false);
+      };
     }
+        fetchSearchMovie(query)
+      
   }, [query]);
 
   return (
-    <>
-      <SearchBar />;
-      movies.length?(<MovieList movies={movies}/>): (
-      <p>There isn't any movie on this page.</p>);
-    </>
+    <div>
+      <SearchBar />
+      {loading && <Loader />}
+      {movies.length ? (<MovieList movies={movies} />) : (
+        <p>There isn't any movie on this page.</p>)}
+    </div>
   );
 }
