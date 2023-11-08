@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import { fetchSearchQuery } from 'api';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Loader } from "components/Loader";
 
-export default function Movies() {
+export default function MoviesSearch() {
   const [searchParams] = useSearchParams({ query: '' });
   const query = searchParams.get('query');
   const [movies, setMovies] = useState();
@@ -14,20 +13,12 @@ export default function Movies() {
   // const [error, setError] = useState()
 
   useEffect(() => {
-    async function fetchSearchMovie() {
-      try {
-        setLoading(true)
-        const result = await fetchSearchQuery()
-        setMovies(result)
-      }
-      catch (error) {
-        alert(error.message);
-      } finally {
-        setLoading(false);
-      };
-    }
-        fetchSearchMovie(query)
-      
+    setLoading(true)
+    fetchSearchQuery(query).then(result => { setMovies(result) })
+      .catch(error => {
+        alert(error.message)
+      })
+   .finally(() => setLoading(false));
   }, [query]);
 
   return (
