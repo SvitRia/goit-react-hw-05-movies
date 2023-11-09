@@ -21,7 +21,10 @@ const Reviews = () => {
     fetchReviews();
   }, [movieId]);
 
+  if (reviews.length === 0) { return <text>We havn't review for this movie</text> }
+  
   return (
+   
     <>
       {error && <div>{error}</div>}
       <ul>

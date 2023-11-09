@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { fetchMoviesDetails } from 'api';
 import styled from 'styled-components';
-import { Loader } from "components/Loader";
+import { Loader } from 'components/Loader';
+import {BackLink} from 'components/BackLink'
 
 export const MovieDetailBox = styled.div`
   display: flex;
@@ -44,13 +45,13 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   let activeClassName = {
     color: '#245c39',
   };
 
-  const handleClick = () => navigate(location?.state?.from ?? '/');
+  // const handleClick = () => navigate(location?.state?.from ?? '/');
 
   useEffect(() => {
     setLoading(true);
@@ -68,7 +69,10 @@ export default function MovieDetailsPage() {
   return (
     <>
       <>
-        <button onClick={handleClick}>Go back</button>
+         <BackLink to={location.state?.from ?? '/'}>
+        Go back
+      </BackLink>
+        {/* <button onClick={handleClick}>Go back</button> */}
         {/* {movie && <h3>{movie.title} </h3> } */}
         {loading && <Loader />}
         {error && <div>{error}</div>}
