@@ -33,7 +33,7 @@ const Cast = () => {
           return (
             <li key={castItem.id} >
               <img
-                src={`https://image.tmdb.org/t/p/w300${castItem.profile_path}`}
+                src={`https://image.tmdb.org/t/p/w300/${castItem.profile_path}`}
                       alt={`${castItem.name} portrait`}
                       width="120"
               />

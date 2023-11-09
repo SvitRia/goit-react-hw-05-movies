@@ -5,7 +5,7 @@ import { fetchMoviesDetails } from 'api';
 import styled from 'styled-components';
 import { Loader } from "components/Loader";
 
-const MovieDetailBox = styled.div`
+export const MovieDetailBox = styled.div`
   display: flex;
   flex-direction: row;
   gap: ${p => p.theme.spacing(6)};
@@ -14,7 +14,7 @@ const MovieDetailBox = styled.div`
   margin: 0 auto;
 `;
 
-const AboutMovieBox = styled.div`
+export const AboutMovieBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${p => p.theme.spacing(6)};
@@ -24,7 +24,7 @@ const AboutMovieBox = styled.div`
   font-size: 18px;
 `;
 
-const AditionalBox = styled.div`
+export const AditionalBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${p => p.theme.spacing(1)};
