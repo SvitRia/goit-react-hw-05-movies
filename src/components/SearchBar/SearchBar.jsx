@@ -15,9 +15,10 @@ export const SearchBar =() => {
   return (
     <SearchForm onSubmit={handleSubmit}>
       <input
-        name="searchQuery"
-        value={searchQuery}
-        onChange={({ target: { value } }) => setSearchQuery(value)}
+              name="searchQuery"
+              placeholder='Search movie...'
+               value={searchQuery}
+              onChange={({ target: { value } }) => setSearchQuery(value)}
       />
       <button type="submit">Search</button>
     </SearchForm>

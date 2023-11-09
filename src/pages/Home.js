@@ -28,7 +28,6 @@ export default function HomePage() {
             fetchMoviesTrending();
         }, []
         );
-    console.log(movies)
     
         return (
             <div>

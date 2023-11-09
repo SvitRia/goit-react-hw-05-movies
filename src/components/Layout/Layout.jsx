@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
 import { Header } from './Layout.styled';
+import {  Suspense } from 'react';
 
 export const Container = styled.div`
   display: flex;
@@ -18,9 +19,9 @@ export const Layout = () => {
       <Header>
         <Navigation />
       </Header>
-
+ <Suspense fallback={<div>Loading...</div>}> 
       <Outlet />
-      
+      </Suspense>  
     </div>
   );
 };

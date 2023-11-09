@@ -2,6 +2,37 @@ import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { fetchMoviesDetails } from 'api';
+import styled from 'styled-components';
+import { Loader } from "components/Loader";
+
+const MovieDetailBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: ${p => p.theme.spacing(6)};
+  padding: ${p => p.theme.spacing(4)};
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const AboutMovieBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${p => p.theme.spacing(6)};
+  padding: ${p => p.theme.spacing(4)};
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+`;
+
+const AditionalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${p => p.theme.spacing(1)};
+  padding: ${p => p.theme.spacing(4)};
+  max-width: 1200px;
+  margin-left: 20px;
+  font-size: 18px;
+`;
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -14,7 +45,6 @@ export default function MovieDetailsPage() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   let activeClassName = {
     color: '#245c39',
@@ -40,32 +70,32 @@ export default function MovieDetailsPage() {
       <>
         <button onClick={handleClick}>Go back</button>
         {/* {movie && <h3>{movie.title} </h3> } */}
-        {loading && 'Loading ...'}
+        {loading && <Loader />}
         {error && <div>{error}</div>}
         {movie && (
-          <div>
+          <MovieDetailBox>
             <div>
               <img
                 src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
                 alt={movie.title}
+                width="300"
               />
             </div>
-                      <div> 
-              <h3>{movie.title}</h3>
-                          <p>({getYear()})</p>
-                          <div></div>
-                          
+                      <AboutMovieBox> 
+                          <h3>{movie.title}<span>({getYear()})</span>
+              </h3>
+                       
             <h3>User Score: {movie.popularity}</h3>
             <div >
               <h3>Overview</h3>
               <p>{movie.overview}</p>
             </div>
-            </div>
-          </div>
+            </AboutMovieBox>
+          </MovieDetailBox>
         )}
         <hr />
 
-        <div>
+        <AditionalBox>
           <h2>Additional Information</h2>
           <NavLink
             to={`/movies/${movieId}/reviews`}
@@ -84,7 +114,7 @@ export default function MovieDetailsPage() {
           </NavLink>
           <hr />
           <Outlet />
-        </div>
+        </AditionalBox>
       </>
     </>
   );

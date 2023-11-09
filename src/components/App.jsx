@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import MovieDetails from 'pages/MovieDetails';
@@ -20,7 +20,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-       <Suspense fallback={<div>Loading...</div>}> 
+      
       <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
@@ -32,7 +32,7 @@ export const App = () => {
           {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Route>
       </Routes>
-      </Suspense>
+    
     </div>
   );
 };
